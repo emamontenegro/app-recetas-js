@@ -103,6 +103,7 @@ aceptar.addEventListener("click", mostrarsaludo)
 
 function mostrarsaludo() {
     let nombre = document.getElementById("nombre").value
+    nombre.placeholder = "Ej: Emanuel"
     let saludo = document.getElementById("saludo")
     let alert = document.getElementById("alert")
     saludo.innerHTML = ""
@@ -112,6 +113,7 @@ function mostrarsaludo() {
     } else {
         saludo.innerHTML = "Bienvenido/a " + nombre + "<3" 
     }
+    localStorage.setItem("nombreusuario", nombre)
 }
 
 
@@ -194,6 +196,16 @@ function mostraringredientes() {
         return
     }
 
+    let guardados = localStorage.getItem("ingredientesingresados")
+    if (guardados) {
+        ingredientesingresados = JSON.parse(guardados)
+        contadoringredientes = 0
+        for(const i of ingredientesingresados) {
+            contadoringredientes++
+        }
+        document.getElementById("alimentosingresados").innerHTML = ingredientesingresados.join(", ")
+    }
+
     let input = document.createElement("input")
     input.className = "input"
     input.id = "inputingrediente"
@@ -233,6 +245,7 @@ function mostraringredientes() {
         input.value = ""
         let alimentosingresados = document.getElementById("alimentosingresados")
         alimentosingresados.innerHTML = ingredientesingresados.join(", ")
+        localStorage.setItem("ingredientesingresados", JSON.stringify(ingredientesingresados))
     })
 
     botonbuscar.addEventListener("click", () => {
@@ -266,5 +279,6 @@ function mostraringredientes() {
         alimentosingresados.innerHTML = "Sin ingredientes seleccionados"
         const recetasingredientes = document.getElementById("recetasingredientes")
         recetasingredientes.innerHTML = ""
+        localStorage.removeItem("ingredientesingresados")
     })
 }

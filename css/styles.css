@@ -3,21 +3,22 @@
     margin: 0;
     padding: 0;
     font-family:"Smooch Sans" , sans-serif;
-    
 }
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    width: 98vw;
     height: 100vh;
-    background-color: rgb(236, 236, 120);
+    box-sizing: border-box;
+    background-color: rgb(236, 250, 160);
+
 }
 
 h1 {
     text-align: center;
     padding: 10px;
-    color: rgb(41, 40, 40);
+    color: rgb(39, 42, 71);
     font-size: 2rem;
 }
 
@@ -25,7 +26,7 @@ h1 {
 
 h2 {
     text-align: center;
-    color: rgb(53, 53, 53);
+    color: rgb(36, 37, 46);
     padding: 3vh;
 }
 
@@ -41,17 +42,18 @@ h2 {
 
 .button {
     padding: 10px 25px;
-    background-color: rgba(24, 23, 23, 0.849);
-    color: rgb(180, 192, 126);
+    background-color: rgb(42, 38, 63);
+    color: rgb(255, 255, 255);
     font-size: 1rem;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 2px auto;
 }
 
 .button:hover {
-    background-color: rgb(85, 69, 54);
+    background-color: rgb(95, 87, 145);
 }
 
 .saludoname, .alertmensaje {
@@ -66,10 +68,9 @@ h2 {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border: 5px saddlebrown;
     border-radius: 15px;
     padding: 10px;
-    background-color: rgb(223, 126, 56);
+    background-color: rgb(250, 242, 134);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     width: fit-content;
     margin: 5px auto;
@@ -78,11 +79,13 @@ h2 {
 /* receta del dia */
 
 .card {
-    background-color: rgb(223, 126, 56);
+    background-color: rgb(252, 252, 252);
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    width: 250px;
+    /* width: 100%; */
+    max-width: 800px;
+    margin: 5px 5px;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 500;
@@ -93,11 +96,15 @@ h2 {
 }
 
 .deldiareceta {
-    background-color: rgb(240, 240, 90);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(250, 242, 134);;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 15px;
     padding: 15px;
-    width: fit-content;
+    width: 64%;
     margin: 5px auto;
 }
 
@@ -106,11 +113,12 @@ h2 {
 .opciones {
     display: flex;
     flex-direction: column;
-    background-color: rgb(240, 240, 90);
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(250, 242, 134);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 15px;
     padding: 15px;
-    width: fit-content;
     margin: 5px auto;
 }
 
@@ -124,10 +132,11 @@ h2 {
 
 .recetasopciones {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     gap: 20px;
     margin: 2px auto;
+    max-width: 100%;
 }
 
 /* que tenes en tu heladera */
@@ -135,11 +144,11 @@ h2 {
 .heladera {
     display: flex;
     flex-direction: column;
-    background-color: rgb(240, 240, 90);
+    background-color: rgb(250, 242, 134);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 15px;
     padding: 15px;
-    width: fit-content;
+    width: 64%;
     margin: 5px auto;
 }
 
@@ -155,7 +164,111 @@ h2 {
 .recetasing {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     gap: 20px;
     margin: 2px auto;
+}
+
+/* media */
+
+@media (max-width: 425px) {
+    body {
+        width: 100%;
+        height: auto;
+        background-color: rgb(236, 250, 160);
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .usuario,
+    .deldiareceta,
+    .opciones,
+    .heladera {
+        width: 100%;
+        max-width: 350px;
+        margin: 2px auto;
+        padding: 15px;
+        border-radius: 12px;
+        box-sizing: border-box;
+    }
+
+    .card {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 1rem;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        border-radius: 12px;
+    }
+
+    .input {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    .button {
+        width: 100%;
+        font-size: 1rem;
+        padding: 12px;
+        border-radius: 8px;
+        border: none;
+        background-color: rgb(42, 38, 63);
+        color: white;
+        transition: transform 0.1s ease, background-color 0.2s ease;
+    }
+
+    .button:hover,
+    .button:active {
+        background-color: rgb(85, 80, 130);
+        transform: scale(0.98);
+    }
+
+    .usuario {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .veropciones,
+    .recetasopciones,
+    .recetasing {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .saludoname, .alertmensaje {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .ingresados {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    p, span {
+        line-height: 1.5;
+        word-wrap: break-word;
+    }
 }
