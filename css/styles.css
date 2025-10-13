@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&family=Smooch+Sans:wght@100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family:"Smooch Sans" , sans-serif;
+    
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(236, 236, 120);
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    color: rgb(41, 40, 40);
+    font-size: 2rem;
+}
+
+/* usuario */
+
+h2 {
+    text-align: center;
+    color: rgb(53, 53, 53);
+    padding: 3vh;
+}
+
+.input {
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-weight: 500;
+}
+
+.button {
+    padding: 10px 25px;
+    background-color: rgba(24, 23, 23, 0.849);
+    color: rgb(180, 192, 126);
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: rgb(85, 69, 54);
+}
+
+.saludoname, .alertmensaje {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: rgb(53, 53, 53);
+}
+
+.usuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 5px saddlebrown;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(223, 126, 56);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    width: fit-content;
+    margin: 5px auto;
+}
+
+/* receta del dia */
+
+.card {
+    background-color: rgb(223, 126, 56);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    width: 250px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-align: center;
+}
+
+.deldiareceta {
+    background-color: rgb(240, 240, 90);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    padding: 15px;
+    width: fit-content;
+    margin: 5px auto;
+}
+
+/* opciones */
+
+.opciones {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 240, 90);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    padding: 15px;
+    width: fit-content;
+    margin: 5px auto;
+}
+
+.veropciones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin: 2px auto;
+}
+
+.recetasopciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 2px auto;
+}
+
+/* que tenes en tu heladera */
+
+.heladera {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 240, 90);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    padding: 15px;
+    width: fit-content;
+    margin: 5px auto;
+}
+
+.ingresados {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.buscar {
+    margin: 2px auto;
+}
+
+.recetasing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 2px auto;
+}

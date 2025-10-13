@@ -5,10 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script defer src="./js/main.js"></script>
-    <title>Document</title>
+    <title>App de Recetas</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
-    <h1>Ema Montenegro</h1>
 <body>
+    <header>
+        <h1>App de Recetas</h1>
+    </header>
     
+    <div id="ingresarusuario" class="usuario">
+        <h2 class="name">Ingresa tu Nombre</h2>
+        <input id="nombre" type="text" class="input" name="nombre">
+        <button id="aceptar" class="button">Aceptar</button>
+        <p id="saludo" class="saludoname"></p>
+        <p id="alert" class="alertmensaje"></p>
+    </div>
+    <section id="recetadeldia" class="deldiareceta">
+        <h2 id="recomendada">Nuestra receta del dia:</h2>
+        <div id="deldia"></div>
+    </section>
+    <section class="opciones">
+        <button id="opciones" class="button"> Querés ver nuestras opciones?</button>
+        <div id="veropciones" class="veropciones"></div>
+        <div id="recetasopciones" class="recetasopciones"></div>
+    </section>
+    <section class="heladera">
+        <button id="poringredientes" class="button">Queres buscar por ingredientes que tengas?</button>
+        <div id="busquedaingredientes" class="buscar"></div>
+        <p id="alimentosingresados" class="ingresados"></p>
+        <p id="error" class="error"></p>
+        <div id="recetasingredientes" class="recetasing"></div>
+    </section>
 </body>
 </html>
