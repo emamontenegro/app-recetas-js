@@ -234,7 +234,6 @@ function quitarfavorita() {
 
             recetasfavoritas = recetasfavoritas.filter(r => r.id != id)
             localStorage.setItem("recetasfavoritas", JSON.stringify(recetasfavoritas))
-s
             mostrarfavoritas()
         })
     })
