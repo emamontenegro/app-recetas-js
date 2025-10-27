@@ -1,139 +1,25 @@
-const listarecetas = [
-    {
-        id: 1,
-        tipo: "desayuno",
-        nombre: "tostadas con palta",
-        ingredientes: ["pan", "palta", "sal", "limón", "aceite"],
-        instrucciones:"tostar 2 rebanadas de pan. aplastar 1 palta con una pizca de sal y unas gotas de limón. untar sobre el pan y rociar con un chorrito de aceite si queres.",
-    },
-    {
-        id: 2,
-        tipo: "desayuno",
-        nombre: "omelette de jamon y queso",
-        ingredientes: ["huevos", "jamon", "queso", "sal", "pimienta", "manteca"],
-        instrucciones: "batir 2 huevos con sal y pimienta. volcar en una sarten con un poco de manteca. cuando casi esté cocido, agregar 1-2 fetas de jamon y 1-2 fetas de queso, doblar y dejar que se funda.",
-    },
-    {
-        id: 3,
-        tipo: "desayuno",
-        nombre: "yogur con fruta y granola",
-        ingredientes: ["yogur", "banana", "manzana", "frutos rojos", "granola"],
-        instrucciones:"colocar en un bowl 1 taza de yogur. cortar 1 fruta (banana, manzana o frutos rojos) y mezclar. espolvorear con 3-4 cucharadas de granola.",
-    },
-    {
-        id: 4,
-        tipo: "desayuno",
-        nombre: "pancakes rápidos",
-        ingredientes: ["harina", "huevo", "leche", "azúcar", "polvo de hornear", "manteca", "aceite"],
-        instrucciones: "mezclar 1 taza de harina, 1 huevo, ¾ taza de leche, 1 cucharada de azúcar y 1 cucharadita de polvo de hornear hasta lograr una masa ligera. cocinar porciones en sartén con un poco de manteca hasta dorar de ambos",
-    },
-    {
-        id: 5,
-        tipo: "almuerzo",
-        nombre: "pasta con salsa de tomate y ajo",
-        ingredientes: ["pasta", "pure de tomate", "ajo", "aceite", "sal", "oregano", "albahaca"],
-        instrucciones: "hervir 200 g de pasta en agua con sal. Saltear 1 diente de ajo en aceite, agregar 1 lata o 2 tomates triturados, sal y especias. mezclar con la pasta y servir.",
-    },
-    {
-        id: 6,
-        tipo: "almuerzo",
-        nombre: "arroz salteado con verduras",
-        ingredientes: ["arroz", "zanahoria", "cebolla", "pimiento", "salsa de soja", "sal", "aceite"],
-        instrucciones: "picar 1 zanahoria, ½ cebolla y ½ pimiento. saltear en aceite hasta tiernos. agregar 1 taza de arroz cocido y condimentar con salsa de soja o sal.",
-    },
-    {
-        id: 7,
-        tipo: "almuerzo",
-        nombre: "ensalada cesar",
-        ingredientes: ["lechuga", "pollo", "pan", "queso rallado", "aderezo", "aceite", "sal", "pimienta"],
-        instrucciones: "Cortar 1 lechuga en trozos. cocinar 1 pechuga de pollo y cortarla en tiras. tostar 2 rebanadas de pan en cubos para croutones. mezclar con queso rallado y aderezo (puede ser 2 cucharadas de mayonesa + jugo de ½ limón + 1 cucharadita de mostaza).",
-    },
-    {
-        id: 8,
-        tipo: "almuerzo",
-        nombre: "supremas al horno con pure",
-        ingredientes: ["pollo", "pan rallado", "huevo", "sal", "pimienta", "aceite", "papas", "leche", "manteca"],
-        instrucciones: "pasar 1 pechuga de pollo fileteada por 1 huevo batido y pan rallado. hornear a 200 °C por 20 minutos, dando vuelta a la mitad. para el pure: hervir 3-4 papas en agua con sal, pisar y mezclar con ½ taza de leche y 1 cucharada de manteca. servir juntos.",
-    },
-    {
-        id: 9,
-        tipo: "merienda",
-        nombre: "tostadas con manteca y mermelada",
-        ingredientes: ["pan", "manteca", "mermelada"],
-        instrucciones: "tostar 2 rebanadas de pan, untar con manteca y cubrir con mermelada.",
-    },
-    {
-        id: 10,
-        tipo: "merienda",
-        nombre: "budin de pan",
-        ingredientes: ["pan", "huevo", "leche", "azucar", "canela"],
-        instrucciones: "desmenuzar 2 rebanadas de pan en un bowl. agregar 1 huevo, ½ taza de leche, 1 cucharada de azúcar y canela. cocinar en microondas 2-3 minutos.",
-    },
-    {
-        id: 11,
-        tipo: "merienda",
-        nombre: "banana con mantequilla de mani",
-        ingredientes: ["banana", "mantequilla de mani", "granola"],
-        instrucciones: "cortar 1 banana en rodajas. untar con 2 cucharadas de mantequilla de mani y espolvorear con granola.",
-    },
-    {
-        id: 12,
-        tipo: "merienda",
-        nombre: "quesadillas rapidas",
-        ingredientes: ["tortillas", "queso", "jamon", "verduras", "manteca", "aceite"],
-        instrucciones: "rellenar 2 tortillas con queso rallado y, si queres, jamon o verduras. cocinar en sarten hasta dorar y fundir el queso.",
-    },
-    {   
-        id: 13,
-        tipo: "cena",
-        nombre: "sopa de verduras",
-        ingredientes: ["zanahoria", "papa", "cebolla", "caldo", "sal", "pimienta"],
-        instrucciones: "pelar y cortar 1 zanahoria, 1 papa y 1 cebolla. cocinar en 1 litro de agua con un cubito de caldo hasta tiernas. Triturar si se prefiere cremosa.",
-    },
-    {
-        id: 14,
-        tipo: "cena",
-        nombre: "tortilla de papa",
-        ingredientes: ["papa", "huevo", "cebolla", "aceite", "sal"],
-        instrucciones: "cortar 2-3 papas en rodajas y freirlas hasta tiernas. mezclar con 2 huevos batidos y ½ cebolla picada. cocinar en sartén por ambos lados hasta dorar.",
-    },
-    {
-        id: 15,
-        tipo: "cena",
-        nombre: "revuelto de zapallitos",
-        ingredientes: ["zapallitos", "huevo", "cebolla", "aceite", "sal", "pimienta"],
-        instrucciones: "picar ½ cebolla y saltear en aceite. agregar 2 zapallitos en cubos y cocinar hasta tiernos. añadir 2 huevos batidos, mezclar hasta que cuaje.",
-    },
-    {
-        id: 16,
-        tipo: "cena",
-        nombre: "fajitas de pollo",
-        ingredientes: ["tortillas", "pollo", "cebolla", "pimiento", "aceite", "sal", "pimienta", "pimenton"],
-        instrucciones: "cortar en tiras 1 pechuga de pollo, ½ cebolla y ½ pimiento. saltear en sarten con aceite, sal, pimienta y pimenton. rellenar tortillas y servir.",
-    },
-]
+//importar recetas
 
-//registrar usuario
+const URL = "./db/data.json"
 
-let aceptar = document.getElementById("aceptar")
-aceptar.addEventListener("click", mostrarsaludo)
-let inputnombre = document.getElementById("nombre")
-inputnombre.placeholder = "Ej: Emanuel"
+let listarecetas = []
 
-function mostrarsaludo() {
-    let nombre = inputnombre.value
-    let saludo = document.getElementById("saludo")
-    let alert = document.getElementById("alert")
-    
-    saludo.innerHTML = ""
-    alert.innerHTML = ""
-    if (nombre === "") {
-        alert.innerHTML = "Por favor ingresa tu Nombre"
-    } else {
-        saludo.innerHTML = "Bienvenido/a " + nombre + "<3" 
-    }
-    localStorage.setItem("nombreusuario", nombre)
+function importarrecetas() {
+    fetch (URL)
+    .then (response => response.json())
+    .then (data => {
+        listarecetas = data
+        recetarecomendada(data, "deldia")
+    })
+    .catch (error => {
+        const contenedor = document.getElementById("maincard")
+        if (contenedor) {
+            contenedor.innerHTML = "<p class='alertmsj'>Error al cargar las recetas. Por favor, intenta nuevamente más tarde.</p>"
+        }
+    })
 }
+importarrecetas()
+
 
 //cards
 
@@ -152,7 +38,38 @@ function mostrarcards(lista, maincardID) {
     botonafavoritas()
 }
 
-//receta recoendada del dia
+//registrar usuario
+
+let aceptar = document.getElementById("aceptar")
+aceptar.addEventListener("click", mostrarsaludo)
+let inputnombre = document.getElementById("nombre")
+inputnombre.placeholder = "Ej: Emanuel"
+
+function mostrarsaludo() {
+    let nombre = inputnombre.value
+    let saludo = document.getElementById("saludo")
+    let alert = document.getElementById("alert")
+    
+    saludo.innerHTML = ""
+    alert.innerHTML = ""
+    if (nombre === "") {
+        Swal.fire({
+            title: "Por favor ingresa tu Nombre",
+            icon: "warning",
+            draggable: true
+        });
+    } else {
+        // saludo.innerHTML = "Bienvenido/a " + nombre 
+        Swal.fire({
+            title: "Bienvenido/a " + nombre,
+            icon: "success",
+            draggable: true
+});
+    }
+    localStorage.setItem("nombreusuario", nombre)
+}
+
+//receta recomendada del dia
 
 function recetarecomendada() {
     let deldia = document.getElementById("deldia")
@@ -160,9 +77,7 @@ function recetarecomendada() {
     let indice = Math.floor(Math.random()*16)
     let recetarandom = [listarecetas[indice]]
     mostrarcards(recetarandom, "deldia")
-    
 }
-recetarecomendada()
 
 // recetas favoritas
 
@@ -204,7 +119,7 @@ function mostrarfavoritas() {
     const guardadas = JSON.parse(localStorage.getItem("recetasfavoritas")) || []
 
     if (!guardadas[0]) {
-        favdiv.innerHTML = "<p>No tienes recetas favoritas aún.</p>"
+        favdiv.innerHTML = "<p class='alertmsj'>No tienes recetas favoritas aún.</p>"
         return
     }
     favdiv.innerHTML = ""
@@ -341,11 +256,15 @@ function buscarReceta() {
             let encontrado = false
 
             for (const rIng of receta.ingredientes) {
-                if (rIng.toLowerCase().includes(ing.toLowerCase())) encontrado = true
+                if (rIng.toLowerCase().includes(ing.toLowerCase())) {
+                    encontrado = true
+                }
             }
 
-            if (!encontrado) cumple = false
-    }
+            if (!encontrado) {
+                cumple = false
+            }
+        }
 
         if (cumple) resultados.push(receta)
     }
