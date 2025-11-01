@@ -16,7 +16,9 @@ function importarrecetas() {
         if (contenedor) {
             contenedor.innerHTML = "<p class='alertmsj'>Error al cargar las recetas. Por favor, intenta nuevamente más tarde.</p>"
         }
+        error()
     })
+
 }
 importarrecetas()
 
@@ -30,8 +32,8 @@ function mostrarcards(lista, maincardID) {
     let mainCard = document.createElement ("div")
     mainCard.className = "card"
     mainCard.innerHTML = `<h3 class="cardnombre">${receta.nombre}</h3>
-                            <p class="cardingredientes"><span>ingredientes: </span>${receta.ingredientes}</p> 
-                            <p class="cardinstrucciones"><span>instrucciones: </span>${receta.instrucciones}</p>
+                            <p class="cardingredientes"><span class="spancard">ingredientes: </span>${receta.ingredientes.join(", ")}</p> 
+                            <p class="cardinstrucciones"><span class="spancard">instrucciones: </span>${receta.instrucciones}</p>
                             <button id="${receta.id}" class="button favoritosbt">Agregar a favoritos</button>`
     contenedorcards.appendChild(mainCard)
     })
@@ -56,15 +58,24 @@ function mostrarsaludo() {
         Swal.fire({
             title: "Por favor ingresa tu Nombre",
             icon: "warning",
-            draggable: true
-        });
+            draggable: true,
+            background: "#222222",
+            iconColor: "#ffcc00",
+            color: "#ffffff",
+            confirmButtonColor: "#ffcc00",
+            buttonhoverColor: "#ff8b07"
+        })
     } else {
-        // saludo.innerHTML = "Bienvenido/a " + nombre 
         Swal.fire({
             title: "Bienvenido/a " + nombre,
             icon: "success",
-            draggable: true
-});
+            draggable: true,
+            background: "#222222",
+            iconColor: "#ffcc00",
+            color: "#ffffff",
+            confirmButtonColor: "#ffcc00",
+            buttonhoverColor: "#ff8b07"
+        })
     }
     localStorage.setItem("nombreusuario", nombre)
 }
@@ -119,7 +130,16 @@ function mostrarfavoritas() {
     const guardadas = JSON.parse(localStorage.getItem("recetasfavoritas")) || []
 
     if (!guardadas[0]) {
-        favdiv.innerHTML = "<p class='alertmsj'>No tienes recetas favoritas aún.</p>"
+        Swal.fire({
+            title: "No tienes recetas guardadas",
+            icon: "error",
+            draggable: true,
+            background: "#222222",
+            iconColor: "#ffcc00",
+            color: "#ffffff",
+            confirmButtonColor: "#ffcc00",
+            buttonhoverColor: "#ff8b07"
+        })
         return
     }
     favdiv.innerHTML = ""
@@ -127,12 +147,10 @@ function mostrarfavoritas() {
     guardadas.forEach(r => {
         const card = document.createElement("div")
         card.className = "card"
-        card.innerHTML = `
-            <h3 class="cardnombre">${r.nombre}</h3>
-            <p class="cardingredientes"><span>ingredientes:</span> ${r.ingredientes.join(", ")}</p>
-            <p class="cardinstrucciones"><span>instrucciones:</span> ${r.instrucciones}</p>
-            <button id="${r.id}" class="button favquitar">Quitar de favoritos</button>
-        `
+        card.innerHTML = `<h3 class="cardnombre">${r.nombre}</h3>
+                            <p class="cardingredientes"><span class="spancard">ingredientes: </span> ${r.ingredientes.join(", ")}</p>
+                            <p class="cardinstrucciones"><span class="spancard">instrucciones: </span> ${r.instrucciones}</p>
+                            <button id="${r.id}" class="button favquitar">Quitar de favoritos</button>`
         favdiv.appendChild(card)
     })
 
@@ -154,151 +172,3 @@ function quitarfavorita() {
     })
 }
 
-// lista de opciones
-
-const opciones = document.getElementById("opciones")
-opciones.addEventListener("click", mostraropciones)
-let botonesgenerados = false
-
-function mostraropciones() {
-    let veropciones = document.getElementById("veropciones")
-    let recetasopciones = document.getElementById("recetasopciones")
-    veropciones.innerHTML = ""
-    if (botonesgenerados) {
-        veropciones.innerHTML = ""
-        recetasopciones.innerHTML = ""
-        botonesgenerados = false
-        return
-    }
-    const botonop = ["desayuno", "almuerzo", "merienda", "cena"]
-    for(const bot of botonop) {
-        let boton = document.createElement("button")
-        boton.className = "button"
-        boton.innerHTML = bot
-        veropciones.appendChild(boton)
-        boton.addEventListener("click", () => mostrardetalle(bot))
-    }
-    botonesgenerados = true
-}
-
-function mostrardetalle(tipocomida) {
-    const recetasopciones = document.getElementById("recetasopciones")
-    recetasopciones.innerHTML = ""
-    const recetasFiltradas = listarecetas.filter(receta => receta.tipo === tipocomida)
-    mostrarcards(recetasFiltradas, "recetasopciones")
-}
-
-
-// que tenes en tu heladera
-
-const poringredientes = document.getElementById("poringredientes")
-const busquedaingredientes = document.getElementById("busquedaingredientes")
-const alimentosingresados = document.getElementById("alimentosingresados")
-const recetasingredientes = document.getElementById("recetasingredientes")
-const error = document.getElementById("error")
-
-let ingredientesingresados = JSON.parse(localStorage.getItem("ingredientesingresados")) || []
-
-// abrir el panel de búsqueda
-poringredientes.addEventListener("click", () => {
-    if (busquedaingredientes.innerHTML !== "") {
-        limpiarBusqueda()
-        return
-    }
-
-    busquedaingredientes.innerHTML = `
-    <input id="inputingrediente" placeholder="Ingresa un ingrediente" class="input">
-    <button id="agregar" class="button">Agregar</button>
-    <button id="buscar" class="button">Buscar</button>
-    <button id="limpiar" class="button">Eliminar búsqueda</button>`
-
-    document.getElementById("agregar").onclick = agregarIngrediente
-    document.getElementById("buscar").onclick = buscarReceta
-    document.getElementById("limpiar").onclick = limpiarBusqueda
-})
-
-// agregar ingrediente a la lista
-function agregarIngrediente() {
-    const input = document.getElementById("inputingrediente")
-    const valor = input.value.toLowerCase().trim()
-    if (valor === "") return
-
-    let repetido = false
-    for (const i of ingredientesingresados) {
-        if (i === valor) repetido = true
-    }
-
-    let total = 0
-    for (const i of ingredientesingresados) total++
-
-    if (!repetido && total < 3) {
-        ingredientesingresados.push(valor)
-        localStorage.setItem("ingredientesingresados", JSON.stringify(ingredientesingresados))
-        actualizarLista()
-    }
-
-    input.value = ""
-}
-
-// buscar recetas que contengan los ingredientes ingresados
-function buscarReceta() {
-    if (ingredientesingresados[0] === undefined) {
-        mostrarError("Debes ingresar al menos 1 ingrediente")
-        return
-    }
-
-    const resultados = []
-
-    for (const receta of listarecetas) {
-        let cumple = true
-
-        for (const ing of ingredientesingresados) {
-            let encontrado = false
-
-            for (const rIng of receta.ingredientes) {
-                if (rIng.toLowerCase().includes(ing.toLowerCase())) {
-                    encontrado = true
-                }
-            }
-
-            if (!encontrado) {
-                cumple = false
-            }
-        }
-
-        if (cumple) resultados.push(receta)
-    }
-
-    if (resultados[0] === undefined) {
-    mostrarError("No tenemos recetas con esos ingredientes :(")
-    recetasingredientes.innerHTML = ""
-    return
-    }
-
-    mostrarError("")
-    mostrarcards(resultados, "recetasingredientes")
-}
-
-// limpiar búsqueda y resultados
-function limpiarBusqueda() {
-    ingredientesingresados = []
-    localStorage.removeItem("ingredientesingresados")
-    busquedaingredientes.innerHTML = ""
-    recetasingredientes.innerHTML = ""
-    alimentosingresados.innerHTML = ""
-    mostrarError("")
-}
-
-// mostrar lista de ingredientes en pantalla
-function actualizarLista() {
-    if (ingredientesingresados[0] === undefined) {
-        alimentosingresados.textContent = "Sin ingredientes seleccionados"
-    } else {
-        alimentosingresados.textContent = ingredientesingresados.join(", ")
-    }
-}
-
-// mostrar errores en pantalla
-function mostrarError(msg) {
-    error.textContent = msg
-}
