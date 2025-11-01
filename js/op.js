@@ -149,7 +149,6 @@ function limpiarBusqueda() {
     busquedaingredientes.innerHTML = ""
     recetasingredientes.innerHTML = ""
     alimentosingresados.innerHTML = ""
-    mostrarError("")
 }
 
 // mostrar lista de ingredientes en pantalla
