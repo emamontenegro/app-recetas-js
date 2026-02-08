@@ -1,20 +1,20 @@
 # 🍽️ Recipe App
 
-A responsive recipe web application built with **vanilla JavaScript**, **HTML5**, and **CSS**, focused on dynamic content handling and user interaction.
+A responsive recipe web application developed using **vanilla JavaScript**, with a strong focus on application logic, DOM manipulation, and user interaction.
 
 ## 🚀 Project Overview
 
-This project allows users to explore and interact with different recipes through a clean and intuitive interface.  
-It was developed to practice core JavaScript concepts, DOM manipulation, and user feedback patterns without relying on frontend frameworks.
+This project allows users to explore and interact with recipes through a clean and intuitive interface.  
+It was built to practice core JavaScript concepts without relying on frameworks, reinforcing a solid understanding of frontend fundamentals.
 
 ## 🧠 Technical Details
 
-- Application logic implemented using vanilla JavaScript (ES6+)
+- Application logic entirely implemented in vanilla JavaScript (ES6+)
 - Dynamic DOM manipulation for rendering and updating recipe content
-- Event-driven architecture for user interactions
-- Interactive alerts and notifications implemented with SweetAlert2
-- Responsive layout built with HTML5 and CSS
-- Clean separation between structure, styles, and behavior
+- Event-driven interactions handling user actions
+- User feedback and notifications implemented with SweetAlert2
+- Responsive layout achieved through CSS and flexible HTML structure
+- Clear separation between logic, structure, and styles
 
 ## 🛠️ Tech Stack
 
@@ -25,10 +25,10 @@ It was developed to practice core JavaScript concepts, DOM manipulation, and use
 
 ## ✨ Features
 
-- Responsive design across multiple devices
-- Dynamic recipe rendering using JavaScript
-- User interaction feedback via SweetAlert2 alerts
-- Clean and intuitive user interface
+- Fully dynamic behavior handled with JavaScript
+- Responsive interface across different devices
+- Interactive alerts and user feedback using SweetAlert2
+- Clean and simple UI focused on usability
 
 ## 🌐 Live Demo
 
